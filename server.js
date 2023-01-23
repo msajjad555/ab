@@ -28,9 +28,10 @@ app.use(productsRouter)
 app.use(multerRoute)
 app.use(bannerroutes)
 app.use(express.static(path.join(__dirname,"../frontend/build")))
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,"../frontend/build/index.html"))
-})
+app.get('*', function (req, res) {
+  const index = path.join(__dirname, 'build', 'index.html');
+  res.sendFile(index);
+});
 app.post('/ini',initialData)
 dotenv.config({path:'config/config.env'})
 DB();
